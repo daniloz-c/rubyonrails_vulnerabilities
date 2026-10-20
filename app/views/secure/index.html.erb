@@ -1,0 +1,16 @@
+<h1>Versão segura — XSS</h1>
+<p>O Rails escapa HTML automaticamente em templates ERB. Esta página não usa <code>raw</code> nem <code>html_safe</code>.</p>
+<div class="panel">
+  <form action="/secure/comments" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <label for="body">Comentário</label>
+    <textarea id="body" name="body" rows="3" maxlength="2000" required></textarea>
+    <button type="submit">Salvar com escape padrão</button>
+  </form>
+  <h2>Comentários (saída escapada)</h2>
+  <% @comments.each do |comment| %>
+    <div class="panel"><%= comment.body %></div>
+  <% end %>
+</div>
+<h2>Versão segura — SQLi</h2>
+<p><a href="/secure/users?q=alice">Pesquisar alice com consulta parametrizada →</a></p>

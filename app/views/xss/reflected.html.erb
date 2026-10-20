@@ -1,0 +1,7 @@
+<h1>XSS refletido</h1>
+<p class="warning"><span class="vuln">VULNERÁVEL:</span> o valor enviado é renderizado como HTML via <code>raw</code>.</p>
+<div class="panel">
+  <h2>Saída renderizada</h2>
+  <%= raw(@message) %>
+</div>
+<p><a href="/xss">Voltar</a></p>

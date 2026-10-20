@@ -1,0 +1,2 @@
+class LabAccount < ApplicationRecord
+end

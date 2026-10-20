@@ -1,0 +1,18 @@
+<h1>Busca segura de usuários</h1>
+<p>Consulta parametrizada: <code>LabUser.where("username = ?", term)</code></p>
+<div class="panel">
+  <form action="/secure/users" method="get">
+    <label for="q">Nome de usuário</label>
+    <input id="q" name="q" value="<%= params[:q] %>">
+    <button type="submit">Pesquisar</button>
+  </form>
+  <table>
+    <thead><tr><th>ID</th><th>Usuário</th><th>Papel</th></tr></thead>
+    <tbody>
+    <% @users.each do |user| %>
+      <tr><td><%= user.id %></td><td><%= user.username %></td><td><%= user.role %></td></tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<p><a href="/secure">Voltar</a></p>

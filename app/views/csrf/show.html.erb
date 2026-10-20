@@ -1,0 +1,12 @@
+<h1>CSRF — alteração de estado</h1>
+<p class="warning"><span class="vuln">VULNERÁVEL:</span> o controlador desta rota desabilita a proteção CSRF do Rails. O saldo é fictício.</p>
+<div class="panel">
+  <h2><%= @balance.name %></h2>
+  <p>Saldo atual: <strong><%= @balance.balance %> créditos fictícios</strong></p>
+  <form action="/csrf/transfer" method="post">
+    <label for="amount">Quantidade para debitar</label>
+    <input id="amount" name="amount" type="number" min="1" max="100" value="10" required>
+    <button type="submit">Debitar saldo fictício</button>
+  </form>
+  <p class="muted">Observe que o formulário não inclui token de autenticidade. Em aplicações reais, mantenha a proteção CSRF do Rails e use controles adicionais apropriados para ações sensíveis.</p>
+</div>

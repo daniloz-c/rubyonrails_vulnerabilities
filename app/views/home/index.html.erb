@@ -1,0 +1,22 @@
+<h1>Security PoC Lab</h1>
+<p>Laboratório local para entender três classes comuns de vulnerabilidade web e comparar com mitigação.</p>
+<div class="warning"><strong>Somente para laboratório:</strong> esta aplicação contém vulnerabilidades intencionais. Execute localmente, vinculada a <code>127.0.0.1</code>. Não publique na internet nem use dados reais.</div>
+<div class="panel">
+  <h2>1. Cross-Site Scripting (XSS)</h2>
+  <p>Compare XSS refletido e armazenado, e observe o efeito de renderizar entrada não confiável como HTML.</p>
+  <a href="/xss">Abrir demonstração →</a>
+</div>
+<div class="panel">
+  <h2>2. Cross-Site Request Forgery (CSRF)</h2>
+  <p>Um formulário altera um saldo fictício. O controlador didático ignora a proteção CSRF para demonstrar por que tokens e validação de origem importam.</p>
+  <a href="/csrf">Abrir demonstração →</a>
+</div>
+<div class="panel">
+  <h2>3. SQL Injection (SQLi)</h2>
+  <p>Compare uma consulta SQL vulnerável por concatenação com a versão parametrizada.</p>
+  <a href="/sqli">Abrir demonstração →</a>
+</div>
+<div class="panel">
+  <h2>Boas práticas</h2>
+  <ul><li>Não usar <code>raw</code> ou <code>html_safe</code> com entrada do usuário.</li><li>Manter a proteção CSRF do Rails habilitada.</li><li>Usar Active Record com consultas parametrizadas.</li><li>Executar o laboratório sem acesso externo.</li></ul>
+</div>

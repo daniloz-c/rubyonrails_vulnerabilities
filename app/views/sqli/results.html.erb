@@ -1,0 +1,18 @@
+<h1>Resultado SQLi</h1>
+<div class="panel">
+  <h2>Consulta construída</h2>
+  <pre><%= @sql_preview %></pre>
+  <% if @error %>
+    <p class="alert">Erro SQL/Active Record: <%= @error %></p>
+  <% else %>
+    <table>
+      <thead><tr><th>ID</th><th>Usuário</th><th>Papel</th></tr></thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr><td><%= user.id %></td><td><%= user.username %></td><td><%= user.role %></td></tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+<p><a href="/sqli">Voltar à busca</a></p>

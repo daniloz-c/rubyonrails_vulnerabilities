@@ -1,0 +1,15 @@
+<h1>SQL Injection (SQLi)</h1>
+<p class="warning"><span class="vuln">VULNERÁVEL:</span> a busca abaixo concatena a entrada diretamente em uma consulta SQL. Use somente no banco fictício deste laboratório.</p>
+<div class="panel">
+  <form action="/sqli/search" method="get">
+    <label for="q">Nome de usuário</label>
+    <input id="q" name="q" value="alice" placeholder="alice">
+    <button type="submit">Pesquisar na consulta vulnerável</button>
+  </form>
+  <p class="muted">Usuários sem dados sensíveis: alice, bob e carol.</p>
+</div>
+<div class="panel">
+  <h2>Comparação segura</h2>
+  <p>Use a página de versões seguras para ver o uso de parâmetros em Active Record.</p>
+  <a href="/secure/users?q=alice">Executar busca parametrizada por alice →</a>
+</div>

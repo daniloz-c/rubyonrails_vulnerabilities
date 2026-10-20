@@ -1,0 +1,26 @@
+<h1>XSS — refletido e armazenado</h1>
+<p class="warning"><span class="vuln">VULNERÁVEL:</span> esta página usa intencionalmente <code>raw</code> para renderizar conteúdo não confiável como HTML.</p>
+<div class="panel">
+  <h2>XSS refletido</h2>
+  <form action="/xss/reflected" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <label for="message">Mensagem para refletir</label>
+    <input id="message" name="message" value="Olá, laboratório">
+    <button type="submit">Enviar</button>
+  </form>
+  <p class="muted">Use apenas payloads inofensivos de prova de conceito, por exemplo texto com marcação HTML, em seu próprio laboratório.</p>
+</div>
+<div class="panel">
+  <h2>XSS armazenado</h2>
+  <form action="/xss/comments" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <label for="body">Comentário</label>
+    <textarea id="body" name="body" rows="3" maxlength="2000" required></textarea>
+    <button type="submit">Salvar comentário</button>
+  </form>
+  <h3>Comentários</h3>
+  <% if @comments.empty? %><p class="muted">Nenhum comentário ainda.</p><% end %>
+  <% @comments.each do |comment| %>
+    <div class="panel"><%= raw(comment.body) %></div>
+  <% end %>
+</div>
