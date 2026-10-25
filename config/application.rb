@@ -16,7 +16,7 @@ module SecurityPocLab
   class Application < Rails::Application
     config.load_defaults 7.1
     config.time_zone = "UTC"
-    config.active_record.sqlite3.strict_strings_by_default = true
+    config.active_record.sqlite3_adapter_strict_strings_by_default = true
     config.hosts.clear if Rails.env.development?
   end
 end

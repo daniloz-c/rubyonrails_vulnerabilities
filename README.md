@@ -7,12 +7,25 @@ Aplicação **intencionalmente vulnerável**, isolada para estudo local de XSS, 
 - Bundler
 - SQLite3
 
+## Instalar dependências (Linux Mint 22 / Ubuntu 24.04)
+```bash
+sudo apt update
+sudo apt install -y ruby-full ruby-dev ruby-bundler sqlite3 libsqlite3-dev build-essential libyaml-dev libssl-dev zlib1g-dev libreadline-dev pkg-config
+```
+
 ## Executar
 ```bash
+bundle config set --local path vendor/bundle
 bundle install
 bin/rails db:prepare
 bin/rails server -b 127.0.0.1
 ```
+
+As gems são instaladas em `vendor/bundle`, sem precisar de `sudo`. O comando
+`db:prepare` cria o banco SQLite e, na primeira execução, carrega os usuários
+fictícios `alice`, `bob` e `carol`, além da conta de demonstração.
+
+Para verificar o carregamento das classes: `bin/rails zeitwerk:check`.
 Acesse http://127.0.0.1:3000. O binding em `127.0.0.1` evita expor o laboratório à rede.
 
 ## Rotas
